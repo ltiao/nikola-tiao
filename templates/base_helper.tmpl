@@ -94,19 +94,15 @@ lang="{{ lang }}">
 
 
 {% macro html_stylesheets() %}
+    
+    {% if needs_ipython_css %}
+        <link href="/assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+        <link href="/assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+    {% endif %}
+
     {% if use_bundles %}
-        {% if use_cdn %}
-            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-            <link href="/assets/css/all.css" rel="stylesheet" type="text/css">
-        {% else %}
-            <link href="/assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
-        {% endif %}
+        <link href="/assets/css/all.css" rel="stylesheet" type="text/css">
     {% else %}
-        {% if use_cdn %}
-            <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-        {% else %}
-            <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        {% endif %}
         <link href="/assets/css/bootstrap-custom.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/rst.css" rel="stylesheet" type="text/css">
         <link href="/assets/css/code.css" rel="stylesheet" type="text/css">
@@ -116,10 +112,7 @@ lang="{{ lang }}">
             <link href="/assets/css/custom.css" rel="stylesheet" type="text/css">
         {% endif %}
     {% endif %}
-    {% if needs_ipython_css %}
-        <link href="/assets/css/ipython.min.css" rel="stylesheet" type="text/css">
-        <link href="/assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
-    {% endif %}
+
     {% if annotations and post and not post.meta('noannotations') %}
         {{ notes.css() }}
     {% elif not annotations and post and post.meta('annotations') %}
