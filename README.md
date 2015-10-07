@@ -15,4 +15,4 @@ TODO:
 - [ ] IPython Notebook
   - [ ] Cell style
   - [ ] Fix inline Mathjax
-- [ ] Nav Dropdown
+- [ ] Nav Dropdown (for submenus)
